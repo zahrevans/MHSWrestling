@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Calendar</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="navbar">
+  <div class="logo">
+    <img src="logo.png">
+    <h2>MUSTANGS</h2>
+  </div>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="achievements.html">Achievements</a>
+    <a href="roster.html">Roster & Stats</a>
+    <a href="calendar.html">Calendar</a>
+  </div>
+</div>
+
+<div class="section">
+  <div class="container">
+
+    <h1 style="text-align:center;">Match Calendar</h1>
+
+    <div style="text-align:center; margin:20px;">
+      <select><option>Month</option></select>
+      <select><option>Year</option></select>
+    </div>
+
+    <div class="calendar">
+      <div class="header">Sun</div>
+      <div class="header">Mon</div>
+      <div class="header">Tue</div>
+      <div class="header">Wed</div>
+      <div class="header">Thu</div>
+      <div class="header">Fri</div>
+      <div class="header">Sat</div>
+
+      <!-- 35 cells -->
+      <script>
+        for (let i = 0; i < 35; i++) {
+          document.write("<div></div>");
+        }
+      </script>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

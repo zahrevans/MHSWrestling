@@ -1,0 +1,118 @@
+/* ===== GLOBAL ===== */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f5f5f5;
+  color: #0b1f3a;
+}
+
+h1, h2, h3 {
+  margin: 0;
+}
+
+.container {
+  width: 90%;
+  margin: auto;
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+  background: #0b1f3a;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 30px;
+  border-bottom: 5px solid gold;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo img {
+  width: 60px;
+}
+
+.nav-links a {
+  color: white;
+  margin: 0 15px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.nav-links a:hover {
+  color: gold;
+}
+
+/* ===== BUTTONS ===== */
+.btn {
+  background: white;
+  padding: 20px;
+  text-align: center;
+  border-radius: 6px;
+  border-bottom: 4px solid gold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+}
+
+/* ===== SECTIONS ===== */
+.section {
+  padding: 40px 0;
+}
+
+.dark {
+  background: #0b1f3a;
+  color: white;
+}
+
+.card {
+  background: white;
+  padding: 40px;
+  border-radius: 8px;
+}
+
+/* ===== GRID ===== */
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+/* ===== CALENDAR ===== */
+.calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  border: 2px solid gold;
+}
+
+.calendar div {
+  border: 1px solid #ccc;
+  height: 100px;
+}
+
+.calendar .header {
+  background: #0b1f3a;
+  color: white;
+  text-align: center;
+  line-height: 50px;
+  height: 50px;
+}
