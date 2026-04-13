@@ -1,45 +1,47 @@
-// 🔗 Your OpenSheet base URL
-const BASE_URL = "https://opensheet.elk.sh/1XjxC3TOYQej1lRxbgcbz8WHke3x1v8_ki2wLU8W8c5E";
+const link = "https://script.google.com/macros/s/AKfycbzSogjWEfy3WrVVzShV9G2FAzyd5XNM4PdwWC6WrijC1ddEt7TbrbocRytFF2UGM_0c/exec";
 
-// Load both rosters
+// Fetch data
 async function loadRoster() {
-  loadTeam("Boy Wrestlers", "boysRoster");
-  loadTeam("Girl Wrestlers", "girlsRoster");
+    try {
+        const res = await fetch(link);
+        const data = await res.json();
+        console.log(data)
+        displayRoster(data.male, "boysRoster");
+        displayRoster(data.female, "girlsRoster");
+
+    } catch (err) {
+        console.error("Error loading roster:", err);
+    }
 }
 
-// Generic function to load a team
-async function loadTeam(sheetName, containerId) {
-  try {
-    const res = await fetch(`${BASE_URL}/${sheetName}`);
-    const data = await res.json();
-
+// Create cards
+function displayRoster(team, containerId) {
     const container = document.getElementById(containerId);
+    container.innerHTML = ""; // clear before adding
 
-    // Clear container (just in case)
-    container.innerHTML = "";
+    if (!team || !Array.isArray(team)) {
+        console.warn(`No team data available for ${containerId}`);
+        return;
+    }
 
-    // 🔁 FOR EACH LOOP (what you wanted)
-    data.forEach(wrestler => {
-      const btn = document.createElement("div");
-      btn.classList.add("btn");
+    team.forEach(player => {
+        const card = document.createElement("div");
+        card.className = "card";
 
-      btn.innerHTML = `
-        <strong>${wrestler.Name}</strong><br>
-        ${wrestler.Year} • ${wrestler["Weight Class"]}<br>
-        Record: ${wrestler.Record}
-      `;
+        card.innerHTML = `
+      <div class="card-content">
+        <img src="${player.image || 'default.png'}" class="card-img">
 
-      // Optional: click to show more info
-      btn.addEventListener("click", () => {
-        alert(`${wrestler.Name}\n${wrestler.Year}\n${wrestler["Weight Class"]}\nRecord: ${wrestler.Record}`);
-      });
+        <h3>${player.name}</h3>
 
-      container.appendChild(btn);
+        <p><strong>Year:</strong> ${player.year}</p>
+        <p><strong>Weight:</strong> ${player.weight}</p>
+        <p><strong>Record:</strong> ${player.record}</p>
+      </div>
+    `;
+
+        container.appendChild(card);
     });
-
-  } catch (err) {
-    console.error("Error loading roster:", err);
-  }
 }
 
 // Run it
