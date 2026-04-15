@@ -5,7 +5,6 @@ async function loadRoster() {
     try {
         const res = await fetch(link);
         const data = await res.json();
-        console.log(data)
         displayRoster(data.male, "boysRoster");
         displayRoster(data.female, "girlsRoster");
 
@@ -16,6 +15,7 @@ async function loadRoster() {
 
 // Create cards
 function displayRoster(team, containerId) {
+    console.log(team)
     const container = document.getElementById(containerId);
     container.innerHTML = ""; // clear before adding
 
@@ -30,13 +30,13 @@ function displayRoster(team, containerId) {
 
         card.innerHTML = `
       <div class="card-content">
-        <img src="${player.image || 'default.png'}" class="card-img">
+        <img src="${player.Image || 'default.png'}" class="card-img">
 
-        <h3>${player.name}</h3>
+        <h3>${player.Name}</h3>
 
-        <p><strong>Year:</strong> ${player.year}</p>
-        <p><strong>Weight:</strong> ${player.weight}</p>
-        <p><strong>Record:</strong> ${player.record}</p>
+        <p><strong>Year:</strong> ${player.Year}</p>
+        <p><strong>Weight:</strong> ${player["Weight Class"]}</p>
+        <p><strong>Record:</strong> ${player.Record}</p>
       </div>
     `;
 
