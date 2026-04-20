@@ -1,53 +1,217 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Calendar</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Match Calendar · Marlboro Mustangs Wrestling</title>
+    <link rel="icon" href="mustangslogo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700;1,800;1,900&family=Barlow:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="calendar.css" />
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <header class="navbar">
+      <a class="nav-logo" href="index.html">
+        <img src="mustangslogo.png" alt="Marlboro Mustangs logo" />
+        <div class="nav-logo-text">Mustangs<span>Wrestling</span></div>
+      </a>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="achievements.html">Achievements</a>
+        <a href="roster.html">Roster &amp; Stats</a>
+        <a href="calendar.html" class="active">Calendar</a>
+      </nav>
+    </header>
 
-<div class="navbar">
-  <div class="logo">
-    <img src="logo.png">
-    <h2>MUSTANGS</h2>
-  </div>
-  <div class="nav-links">
-    <a href="index.html">Home</a>
-    <a href="achievements.html">Achievements</a>
-    <a href="roster.html">Roster & Stats</a>
-    <a href="calendar.html">Calendar</a>
-  </div>
-</div>
-
-<div class="section">
-  <div class="container">
-
-    <h1 style="text-align:center;">Match Calendar</h1>
-
-    <div style="text-align:center; margin:20px;">
-      <select><option>Month</option></select>
-      <select><option>Year</option></select>
+    <!-- PAGE HERO -->
+    <div class="page-hero">
+      <div class="page-hero-inner">
+        <div>
+          <p class="page-eyebrow">Marlboro High School · Wrestling</p>
+          <h1 class="page-title">Match<br /><em>Calendar</em></h1>
+          <p class="page-sub">
+            Full 2025–26 season schedule — boys &amp; girls varsity and JV
+            matches, tournaments, and events.
+          </p>
+        </div>
+        <div class="page-hero-stats">
+          <div>
+            <div class="hero-stat-num" id="heroMatchCount">—</div>
+            <div class="hero-stat-label">Total Events</div>
+          </div>
+          <div>
+            <div class="hero-stat-num" id="heroHomeCount">—</div>
+            <div class="hero-stat-label">Home Matches</div>
+          </div>
+          <div>
+            <div class="hero-stat-num" id="heroTournaments">—</div>
+            <div class="hero-stat-label">Tournaments</div>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div class="calendar">
-      <div class="header">Sun</div>
-      <div class="header">Mon</div>
-      <div class="header">Tue</div>
-      <div class="header">Wed</div>
-      <div class="header">Thu</div>
-      <div class="header">Fri</div>
-      <div class="header">Sat</div>
-
-      <!-- 35 cells -->
-      <script>
-        for (let i = 0; i < 35; i++) {
-          document.write("<div></div>");
-        }
-      </script>
+    <!-- LEGEND -->
+    <div class="legend-bar">
+      <div class="legend-bar-inner">
+        <span class="legend-label">Legend:</span>
+        <span class="legend-item"
+          ><span class="legend-dot legend-dot-home"></span>Home</span
+        >
+        <span class="legend-item"
+          ><span class="legend-dot legend-dot-away"></span>Away</span
+        >
+        <span class="legend-item"
+          ><span class="legend-dot legend-dot-tournament"></span>Tournament /
+          Event</span
+        >
+        <span
+          style="
+            width: 1px;
+            height: 18px;
+            background: rgba(201, 162, 39, 0.15);
+            margin: 0 6px;
+            flex-shrink: 0;
+          "
+        ></span>
+        <span class="legend-item"
+          ><span class="legend-dot legend-dot-boys"></span>Boys</span
+        >
+        <span class="legend-item"
+          ><span class="legend-dot legend-dot-girls"></span>Girls</span
+        >
+      </div>
     </div>
 
-  </div>
-</div>
+    <!-- CALENDAR SECTION -->
+    <section class="cal-section">
+      <div class="cal-inner">
+        <!-- CONTROLS -->
+        <div class="cal-controls">
+          <div class="month-nav">
+            <button class="month-nav-btn" id="prevBtn" onclick="prevMonth()">
+              &#8592;
+            </button>
+            <div class="month-title" id="monthTitle">November 2025</div>
+            <button class="month-nav-btn" id="nextBtn" onclick="nextMonth()">
+              &#8594;
+            </button>
+          </div>
 
-</body>
+          <div class="filter-group">
+            <!-- Gender toggle -->
+            <div class="toggle-group">
+              <button
+                class="toggle-btn active"
+                id="gAll"
+                onclick="setGender('all', this)"
+              >
+                All
+              </button>
+              <button
+                class="toggle-btn"
+                id="gBoys"
+                onclick="setGender('boys', this)"
+              >
+                Boys
+              </button>
+              <button
+                class="toggle-btn"
+                id="gGirls"
+                onclick="setGender('girls', this)"
+              >
+                Girls
+              </button>
+            </div>
+            <!-- Type filter -->
+            <div class="type-filter">
+              <button class="type-btn active" onclick="setType('all', this)">
+                All
+              </button>
+              <button class="type-btn" onclick="setType('match', this)">
+                Matches
+              </button>
+              <button class="type-btn" onclick="setType('tournament', this)">
+                Tournaments
+              </button>
+            </div>
+            <!-- Level toggle -->
+            <div class="toggle-group">
+              <button class="toggle-btn active" onclick="setLevel('all', this)">
+                All
+              </button>
+              <button class="toggle-btn" onclick="setLevel('varsity', this)">
+                Varsity
+              </button>
+              <button class="toggle-btn" onclick="setLevel('jv', this)">
+                JV
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- CALENDAR GRID -->
+        <div class="cal-grid-wrap">
+          <div class="cal-day-headers">
+            <div class="cal-day-header">Sun</div>
+            <div class="cal-day-header">Mon</div>
+            <div class="cal-day-header">Tue</div>
+            <div class="cal-day-header">Wed</div>
+            <div class="cal-day-header">Thu</div>
+            <div class="cal-day-header">Fri</div>
+            <div class="cal-day-header">Sat</div>
+          </div>
+          <div class="cal-grid" id="calGrid"></div>
+        </div>
+
+        <!-- MONTH LIST -->
+        <div class="month-list">
+          <div class="month-list-title">All Events This Month</div>
+          <div id="monthList"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="footer-brand">
+        <img src="mustangslogo.png" alt="Mustangs logo" />
+        <div>
+          <div class="footer-brand-name">Marlboro Mustangs</div>
+          <div class="footer-brand-sub">Wrestling · District 17</div>
+        </div>
+      </div>
+      <nav class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="achievements.html">Achievements</a>
+        <a href="roster.html">Roster &amp; Stats</a>
+        <a href="calendar.html">Calendar</a>
+        <a href="mailto:cfrankel@frhsd.com">Contact</a>
+      </nav>
+      <p class="footer-copy">&copy; 2025 Marlboro High School Athletics</p>
+    </footer>
+
+    <!-- EVENT MODAL -->
+    <div class="modal-overlay" id="eventModal" onclick="closeModal(event)">
+      <div class="modal-box">
+        <div class="modal-header">
+          <div>
+            <div class="modal-type-badge" id="mBadge"></div>
+            <div class="modal-title" id="mTitle"></div>
+          </div>
+          <button class="modal-close" onclick="closeModalDirect()">
+            &#10005;
+          </button>
+        </div>
+        <div class="modal-body" id="mBody"></div>
+      </div>
+    </div>
+
+    <script src="calendar.js"></script>
+  </body>
 </html>

@@ -1,0 +1,184 @@
+ *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #0b1f3a;
+      --navy-mid: #122848;
+      --navy-light: #1a3560;
+      --gold: #C9A227;
+      --gold-bright: #F5C842;
+      --white: #ffffff;
+      --text-muted: #8fa3bc;
+      --home-bg: rgba(201,162,39,0.13);
+      --home-border: rgba(201,162,39,0.5);
+      --away-bg: rgba(26,53,96,0.7);
+      --away-border: rgba(143,163,188,0.35);
+      --tournament-bg: rgba(80,40,120,0.25);
+      --tournament-border: rgba(180,130,255,0.4);
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Barlow', sans-serif; background: var(--navy); color: var(--white); overflow-x: hidden; min-height: 100vh; }
+
+    /* ── NAVBAR ── */
+    .navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(11,31,58,0.95); backdrop-filter: blur(10px); border-bottom: 2px solid var(--gold); display: flex; align-items: center; justify-content: space-between; padding: 0 40px; height: 68px; }
+    .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .nav-logo img { width: 46px; height: 46px; object-fit: contain; }
+    .nav-logo-text { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 20px; color: var(--white); letter-spacing: 0.08em; line-height: 1.1; }
+    .nav-logo-text span { display: block; font-size: 11px; font-weight: 500; color: var(--gold); letter-spacing: 0.2em; }
+    .nav-links { display: flex; align-items: center; gap: 6px; }
+    .nav-links a { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 15px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); text-decoration: none; padding: 8px 16px; border-radius: 4px; transition: color 0.2s, background 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--gold); background: rgba(201,162,39,0.08); }
+
+    /* ── PAGE HERO ── */
+    .page-hero { padding: 130px 60px 70px; background: var(--navy-mid); border-bottom: 1px solid rgba(201,162,39,0.15); position: relative; overflow: hidden; }
+    .page-hero::before { content: 'SCHEDULE'; position: absolute; right: -10px; top: 50%; transform: translateY(-50%); font-family: 'Barlow Condensed', sans-serif; font-size: 180px; font-weight: 900; font-style: italic; color: rgba(201,162,39,0.04); line-height: 1; pointer-events: none; letter-spacing: -0.05em; }
+    .page-hero-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: flex-end; justify-content: space-between; gap: 40px; }
+    .page-eyebrow { font-family: 'Barlow Condensed', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.35em; color: var(--gold); text-transform: uppercase; margin-bottom: 14px; }
+    .page-title { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(52px, 8vw, 90px); font-weight: 900; text-transform: uppercase; line-height: 0.88; letter-spacing: -0.02em; }
+    .page-title em { font-style: italic; color: var(--gold); }
+    .page-sub { font-size: 15px; color: var(--text-muted); margin-top: 18px; max-width: 420px; line-height: 1.65; }
+    .page-hero-stats { display: flex; gap: 48px; flex-shrink: 0; }
+    .hero-stat-num { font-family: 'Barlow Condensed', sans-serif; font-size: 52px; font-weight: 900; color: var(--gold); line-height: 1; }
+    .hero-stat-label { font-size: 11px; font-weight: 500; letter-spacing: 0.2em; color: var(--text-muted); text-transform: uppercase; margin-top: 4px; }
+
+    /* ── LEGEND BAR ── */
+    .legend-bar { background: var(--navy-mid); border-bottom: 1px solid rgba(201,162,39,0.12); padding: 16px 60px; }
+    .legend-bar-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; gap: 28px; flex-wrap: wrap; }
+    .legend-label { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-muted); margin-right: 8px; }
+    .legend-item { display: flex; align-items: center; gap: 8px; font-family: 'Barlow Condensed', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--white); }
+    .legend-dot { width: 12px; height: 12px; border-radius: 3px; flex-shrink: 0; }
+    .legend-dot-home { background: var(--gold); }
+    .legend-dot-away { background: #4a7ab5; }
+    .legend-dot-tournament { background: #9b6ee0; }
+    .legend-dot-boys { background: #4a9ade; }
+    .legend-dot-girls { background: #e05f9b; }
+
+    /* ── CALENDAR SECTION ── */
+    .cal-section { padding: 60px 60px 80px; }
+    .cal-inner { max-width: 1300px; margin: 0 auto; }
+
+    /* ── CONTROLS ── */
+    .cal-controls { display: flex; align-items: center; justify-content: space-between; gap: 20px; margin-bottom: 32px; flex-wrap: wrap; }
+
+    .month-nav { display: flex; align-items: center; gap: 16px; }
+    .month-nav-btn { width: 40px; height: 40px; border-radius: 6px; border: 1px solid rgba(201,162,39,0.3); background: transparent; color: var(--gold); font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s, border-color 0.2s; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; }
+    .month-nav-btn:hover { background: rgba(201,162,39,0.1); border-color: var(--gold); }
+    .month-nav-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+    .month-title { font-family: 'Barlow Condensed', sans-serif; font-size: 32px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.04em; color: var(--white); min-width: 240px; text-align: center; }
+
+    .filter-group { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+
+    .toggle-group { display: inline-flex; background: var(--navy-mid); border: 1px solid rgba(201,162,39,0.2); border-radius: 8px; padding: 4px; gap: 3px; }
+    .toggle-btn { font-family: 'Barlow Condensed', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 8px 20px; border-radius: 5px; border: none; cursor: pointer; transition: background 0.2s, color 0.2s; background: transparent; color: var(--text-muted); }
+    .toggle-btn.active { background: var(--gold); color: var(--navy); }
+    .toggle-btn:hover:not(.active) { color: var(--white); }
+
+    .type-filter { display: inline-flex; background: var(--navy-mid); border: 1px solid rgba(201,162,39,0.2); border-radius: 8px; padding: 4px; gap: 3px; }
+    .type-btn { font-family: 'Barlow Condensed', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 8px 18px; border-radius: 5px; border: none; cursor: pointer; transition: background 0.2s, color 0.2s; background: transparent; color: var(--text-muted); }
+    .type-btn.active { background: rgba(201,162,39,0.15); color: var(--gold); border: 1px solid rgba(201,162,39,0.35); }
+    .type-btn:hover:not(.active) { color: var(--white); }
+
+    /* ── CALENDAR GRID ── */
+    .cal-grid-wrap { background: var(--navy-mid); border: 1px solid rgba(201,162,39,0.12); border-radius: 12px; overflow: hidden; }
+
+    .cal-day-headers { display: grid; grid-template-columns: repeat(7, 1fr); background: rgba(201,162,39,0.06); border-bottom: 1px solid rgba(201,162,39,0.15); }
+    .cal-day-header { font-family: 'Barlow Condensed', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); padding: 14px 0; text-align: center; }
+
+    .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); }
+    .cal-cell { border-right: 1px solid rgba(255,255,255,0.04); border-bottom: 1px solid rgba(255,255,255,0.04); min-height: 110px; padding: 10px 8px; position: relative; transition: background 0.15s; }
+    .cal-cell:nth-child(7n) { border-right: none; }
+    .cal-cell.empty { background: rgba(0,0,0,0.1); }
+    .cal-cell.today { background: rgba(201,162,39,0.05); }
+    .cal-cell.today .cal-day-num { color: var(--gold); background: rgba(201,162,39,0.15); border-radius: 4px; width: 24px; text-align: center; }
+    .cal-cell.has-events { cursor: default; }
+
+    .cal-day-num { font-family: 'Barlow Condensed', sans-serif; font-size: 14px; font-weight: 800; color: var(--text-muted); margin-bottom: 6px; display: inline-block; padding: 1px 4px; }
+
+    .cal-events { display: flex; flex-direction: column; gap: 4px; }
+
+    .cal-event { border-radius: 5px; padding: 4px 7px; font-family: 'Barlow Condensed', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.04em; cursor: pointer; transition: transform 0.15s, box-shadow 0.15s; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; border-left: 3px solid transparent; display: flex; align-items: center; gap: 5px; line-height: 1.3; }
+    .cal-event:hover { transform: translateX(2px); box-shadow: 0 2px 8px rgba(0,0,0,0.3); }
+
+    .cal-event.home { background: var(--home-bg); border-left-color: var(--gold); color: var(--gold-bright); }
+    .cal-event.away { background: var(--away-bg); border-left-color: #6a9fd4; color: #b0ccee; }
+    .cal-event.tournament { background: var(--tournament-bg); border-left-color: #b07af0; color: #d4b0ff; }
+
+    .cal-event .ev-gender { font-size: 10px; opacity: 0.75; flex-shrink: 0; }
+    .cal-event .ev-type-icon { font-size: 10px; flex-shrink: 0; }
+
+    .cal-more { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; color: var(--text-muted); margin-top: 3px; cursor: pointer; padding: 2px 4px; border-radius: 3px; transition: color 0.15s, background 0.15s; display: inline-block; }
+    .cal-more:hover { color: var(--gold); background: rgba(201,162,39,0.08); }
+
+    /* ── NO EVENTS ── */
+    .cal-empty-month { text-align: center; padding: 60px; font-family: 'Barlow Condensed', sans-serif; font-size: 18px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-muted); }
+
+    /* ── LIST VIEW BELOW CALENDAR ── */
+    .month-list { margin-top: 40px; }
+    .month-list-title { font-family: 'Barlow Condensed', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+    .list-event-row { display: flex; align-items: center; gap: 16px; padding: 14px 20px; border-radius: 8px; background: var(--navy-mid); border: 1px solid rgba(201,162,39,0.1); margin-bottom: 8px; cursor: pointer; transition: border-color 0.2s, background 0.2s; }
+    .list-event-row:hover { border-color: rgba(201,162,39,0.35); background: rgba(201,162,39,0.04); }
+    .list-date-block { flex-shrink: 0; width: 52px; text-align: center; }
+    .list-date-day { font-family: 'Barlow Condensed', sans-serif; font-size: 28px; font-weight: 900; color: var(--gold); line-height: 1; }
+    .list-date-month { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); }
+    .list-divider { width: 1px; height: 40px; background: rgba(201,162,39,0.15); flex-shrink: 0; }
+    .list-type-badge { flex-shrink: 0; }
+    .list-badge { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 4px 10px; border-radius: 4px; }
+    .list-badge.home { background: rgba(201,162,39,0.15); color: var(--gold); border: 1px solid rgba(201,162,39,0.3); }
+    .list-badge.away { background: rgba(74,122,181,0.15); color: #8ab4e8; border: 1px solid rgba(74,122,181,0.3); }
+    .list-badge.tournament { background: rgba(155,110,224,0.15); color: #c4a0f0; border: 1px solid rgba(155,110,224,0.3); }
+    .list-info { flex: 1; min-width: 0; }
+    .list-title { font-family: 'Barlow Condensed', sans-serif; font-size: 20px; font-weight: 800; text-transform: uppercase; color: var(--white); line-height: 1.1; }
+    .list-sub { font-size: 13px; color: var(--text-muted); margin-top: 2px; }
+    .list-time { font-family: 'Barlow Condensed', sans-serif; font-size: 16px; font-weight: 700; color: var(--text-muted); flex-shrink: 0; }
+    .list-gender-tag { font-family: 'Barlow Condensed', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 3px 9px; border-radius: 20px; flex-shrink: 0; }
+    .list-gender-tag.boys { background: rgba(74,154,222,0.15); color: #7ab8e8; border: 1px solid rgba(74,154,222,0.3); }
+    .list-gender-tag.girls { background: rgba(224,95,155,0.15); color: #e89bc0; border: 1px solid rgba(224,95,155,0.3); }
+
+    /* ── MODAL OVERLAY ── */
+    .modal-overlay { position: fixed; inset: 0; background: rgba(6,15,28,0.85); backdrop-filter: blur(4px); z-index: 500; display: flex; align-items: center; justify-content: center; padding: 20px; opacity: 0; pointer-events: none; transition: opacity 0.25s; }
+    .modal-overlay.open { opacity: 1; pointer-events: all; }
+    .modal-box { background: var(--navy-mid); border: 1px solid rgba(201,162,39,0.3); border-radius: 14px; width: 100%; max-width: 520px; overflow: hidden; transform: translateY(16px); transition: transform 0.25s; }
+    .modal-overlay.open .modal-box { transform: translateY(0); }
+    .modal-header { padding: 28px 32px 20px; border-bottom: 1px solid rgba(201,162,39,0.15); display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; background: rgba(201,162,39,0.04); }
+    .modal-type-badge { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(201,162,39,0.35); border-radius: 3px; padding: 3px 10px; margin-bottom: 10px; display: inline-block; }
+    .modal-title { font-family: 'Barlow Condensed', sans-serif; font-size: 30px; font-weight: 900; text-transform: uppercase; color: var(--white); line-height: 1; }
+    .modal-close { background: none; border: none; color: var(--text-muted); font-size: 22px; cursor: pointer; padding: 4px; flex-shrink: 0; transition: color 0.2s; line-height: 1; margin-top: -2px; }
+    .modal-close:hover { color: var(--white); }
+    .modal-body { padding: 24px 32px 32px; }
+    .modal-row { display: flex; align-items: flex-start; gap: 12px; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .modal-row:last-child { border-bottom: none; }
+    .modal-row-label { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); width: 90px; flex-shrink: 0; padding-top: 2px; }
+    .modal-row-val { font-family: 'Barlow Condensed', sans-serif; font-size: 18px; font-weight: 700; color: var(--white); line-height: 1.3; }
+    .modal-row-val.gold { color: var(--gold); }
+
+    /* ── FOOTER ── */
+    .footer { background: #060f1c; border-top: 3px solid var(--gold); padding: 48px 60px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .footer-brand { display: flex; align-items: center; gap: 14px; }
+    .footer-brand img { width: 50px; object-fit: contain; }
+    .footer-brand-name { font-family: 'Barlow Condensed', sans-serif; font-size: 20px; font-weight: 900; text-transform: uppercase; color: var(--white); letter-spacing: 0.05em; }
+    .footer-brand-sub { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.25em; color: var(--gold); text-transform: uppercase; }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { font-family: 'Barlow Condensed', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-copy { font-size: 13px; color: var(--text-muted); opacity: 0.5; }
+
+    @media (max-width: 900px) {
+      .navbar { padding: 0 20px; }
+      .page-hero { padding: 110px 24px 60px; }
+      .page-hero-inner { flex-direction: column; align-items: flex-start; }
+      .page-hero-stats { flex-direction: row; flex-wrap: wrap; gap: 24px; }
+      .legend-bar { padding: 14px 24px; }
+      .cal-section { padding: 40px 16px 60px; }
+      .cal-controls { flex-direction: column; align-items: flex-start; gap: 14px; }
+      .month-title { font-size: 24px; min-width: 180px; }
+      .cal-cell { min-height: 80px; padding: 7px 5px; }
+      .cal-event { font-size: 10px; padding: 3px 5px; }
+      .list-event-row { flex-wrap: wrap; gap: 10px; }
+      .footer { flex-direction: column; text-align: center; padding: 40px 24px; }
+      .footer-links { flex-wrap: wrap; justify-content: center; }
+    }
+    @media (max-width: 600px) {
+      .cal-day-header { font-size: 10px; letter-spacing: 0.1em; }
+      .cal-cell { min-height: 60px; padding: 5px 3px; }
+      .cal-event .ev-gender, .cal-event .ev-type-icon { display: none; }
+    }
