@@ -1,57 +1,601 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
-    <title>Roster</title>
-    <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Roster & Stats · Marlboro Mustangs Wrestling</title>
+    <link rel="icon" href="mustangslogo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700;1,800;1,900&family=Barlow:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="roster.css" />
   </head>
   <body>
-    <div class="navbar">
-      <div class="logo">
-        <img src="logo.png" />
-        <h2>MUSTANGS</h2>
-      </div>
-      <div class="nav-links">
+    <!-- NAVBAR -->
+    <header class="navbar">
+      <a class="nav-logo" href="index.html">
+        <img src="mustangslogo.png" alt="Marlboro Mustangs logo" />
+        <div class="nav-logo-text">Mustangs<span>Wrestling</span></div>
+      </a>
+      <nav class="nav-links">
         <a href="index.html">Home</a>
         <a href="achievements.html">Achievements</a>
-        <a href="roster.html">Roster & Stats</a>
+        <a href="roster.html" class="active">Roster &amp; Stats</a>
         <a href="calendar.html">Calendar</a>
-      </div>
-    </div>
+      </nav>
+    </header>
 
-    <div class="section">
-      <div class="container">
-        <h1 style="text-align: center">Team Roster</h1>
-
-        <div class="card" style="margin-top: 20px">
-          <h2 style="text-align: center">Meet the Mustangs</h2>
+    <!-- PAGE HERO -->
+    <div class="page-hero">
+      <div class="page-hero-inner">
+        <div>
+          <p class="page-eyebrow">Marlboro High School · Wrestling</p>
+          <h1 class="page-title">Roster<br /><em>&amp; Stats</em></h1>
+          <p class="page-sub">
+            Meet the Mustangs — current wrestlers, season records, and the
+            program's storied history of champions.
+          </p>
         </div>
-
-        <!-- BOYS -->
-        <h2 style="text-align: center; margin-top: 30px">Boys Team</h2>
-        <div id="boysRoster" class="grid-4" style="margin-top: 20px"></div>
-
-        <!-- GIRLS -->
-        <h2 style="text-align: center; margin-top: 40px">Girls Team</h2>
-        <div id="girlsRoster" class="grid-4" style="margin-top: 20px"></div>
-
-        <h2 style="text-align: center; margin-top: 40px">Past Place Winners</h2>
-
-        <div class="grid-3" style="margin-top: 20px">
-          <div class="card">
-            <h3>District</h3>
-            <p>Name | Place | Weight</p>
+        <div class="page-hero-stats">
+          <div>
+            <div class="hero-stat-num" id="heroTotalWrestlers">—</div>
+            <div class="hero-stat-label">Wrestlers</div>
           </div>
-          <div class="card">
-            <h3>Region</h3>
-            <p>Name | Place | Weight</p>
+          <div>
+            <div class="hero-stat-num">22</div>
+            <div class="hero-stat-label">Team Wins</div>
           </div>
-          <div class="card">
-            <h3>States</h3>
-            <p>Name | Place | Weight</p>
+          <div>
+            <div class="hero-stat-num">5</div>
+            <div class="hero-stat-label">Region Qualifiers</div>
           </div>
         </div>
       </div>
     </div>
+
+    <!-- SEASON RECORD BAR -->
+    <div class="record-bar">
+      <div class="record-bar-inner">
+        <div>
+          <div class="record-bar-label">2025–26 Season Record</div>
+          <div class="record-bar-val">
+            22 — <span id="lossCount" style="color: var(--text-muted)">6</span>
+          </div>
+        </div>
+        <div class="record-bar-divider"></div>
+        <p class="record-note">
+          <strong>New program record</strong> — broke the previous single-season
+          win record of 19 set in 2020.<br />
+          F-Division Champions · 4th place District · 5 Region qualifiers ·
+          First-ever state sectional win.
+        </p>
+      </div>
+    </div>
+
+    <!-- ROSTER SECTION -->
+    <section class="section roster-section">
+      <div class="section-inner">
+        <p class="section-label">2025–26 Season</p>
+        <h2 class="section-heading">Meet the <em>Mustangs</em></h2>
+        <div class="gold-rule"></div>
+
+        <div class="gender-toggle">
+          <button
+            class="gender-btn active"
+            onclick="switchGender('male', this)"
+          >
+            Boys Team
+          </button>
+          <button class="gender-btn" onclick="switchGender('female', this)">
+            Girls Team
+          </button>
+        </div>
+
+        <div id="rosterGrid" class="roster-grid">
+          <div class="roster-loading">
+            Loading roster<span class="loading-dot">.</span
+            ><span class="loading-dot">.</span
+            ><span class="loading-dot">.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HISTORICAL RECORDS -->
+    <section class="section history-section">
+      <div class="section-inner">
+        <p class="section-label">Program History</p>
+        <h2 class="section-heading">Past <em>Place Winners</em></h2>
+        <div class="gold-rule"></div>
+
+        <div class="history-tabs">
+          <button class="tab-btn active" onclick="switchTab('district', this)">
+            🏆 District Champions
+          </button>
+          <button class="tab-btn" onclick="switchTab('region', this)">
+            🥈 Region Place Winners
+          </button>
+          <button class="tab-btn" onclick="switchTab('states-boys', this)">
+            🥇 Boys State Placers
+          </button>
+          <button class="tab-btn" onclick="switchTab('states-girls', this)">
+            👩 Girls State Placers
+          </button>
+        </div>
+
+        <!-- DISTRICT -->
+        <div class="tab-panel active" id="tab-district">
+          <table class="hist-table">
+            <thead>
+              <tr>
+                <th>Year</th>
+                <th>Wrestler</th>
+                <th>Weight</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="year-cell">1970</td>
+                <td class="name-cell">John Somaris</td>
+                <td class="wt-cell">106</td>
+              </tr>
+              <tr>
+                <td class="year-cell">1970</td>
+                <td class="name-cell">Ron Shellock</td>
+                <td class="wt-cell">136</td>
+              </tr>
+              <tr>
+                <td class="year-cell">1970</td>
+                <td class="name-cell">Joel Bareny</td>
+                <td class="wt-cell">141</td>
+              </tr>
+              <tr>
+                <td class="year-cell">1970</td>
+                <td class="name-cell">Jeff Borak</td>
+                <td class="wt-cell">148</td>
+              </tr>
+              <tr>
+                <td class="year-cell">1970</td>
+                <td class="name-cell">Joe Grenkevich</td>
+                <td class="wt-cell">168</td>
+              </tr>
+              <tr>
+                <td class="year-cell">1971</td>
+                <td class="name-cell">Angel Ballester</td>
+                <td class="wt-cell">130</td>
+              </tr>
+              <tr>
+                <td class="year-cell">1971</td>
+                <td class="name-cell">Joe Grenkevich</td>
+                <td class="wt-cell">275</td>
+              </tr>
+              <tr>
+                <td class="year-cell">1972</td>
+                <td class="name-cell">John Madesen</td>
+                <td class="wt-cell">106</td>
+              </tr>
+              <tr>
+                <td class="year-cell">1972</td>
+                <td class="name-cell">Paul Sobko</td>
+                <td class="wt-cell">115</td>
+              </tr>
+              <tr>
+                <td class="year-cell">1976</td>
+                <td class="name-cell">Jeff Panzer</td>
+                <td class="wt-cell">170</td>
+              </tr>
+              <tr>
+                <td class="year-cell">1977</td>
+                <td class="name-cell">Rick Guerino</td>
+                <td class="wt-cell">138</td>
+              </tr>
+              <tr>
+                <td class="year-cell">1978</td>
+                <td class="name-cell">Rich Romero</td>
+                <td class="wt-cell">135</td>
+              </tr>
+              <tr>
+                <td class="year-cell">1978</td>
+                <td class="name-cell">Rich Marko</td>
+                <td class="wt-cell">188</td>
+              </tr>
+              <tr>
+                <td class="year-cell">1979</td>
+                <td class="name-cell">Craig Reilly</td>
+                <td class="wt-cell">275</td>
+              </tr>
+              <tr>
+                <td class="year-cell">1983</td>
+                <td class="name-cell">Matt Bozza</td>
+                <td class="wt-cell">145</td>
+              </tr>
+              <tr>
+                <td class="year-cell">1994</td>
+                <td class="name-cell">Livio DiRubbo</td>
+                <td class="wt-cell">119</td>
+              </tr>
+              <tr>
+                <td class="year-cell">1994</td>
+                <td class="name-cell">Jeff Brand</td>
+                <td class="wt-cell">145</td>
+              </tr>
+              <tr>
+                <td class="year-cell">1995</td>
+                <td class="name-cell">Livio DiRubbo</td>
+                <td class="wt-cell">119</td>
+              </tr>
+              <tr>
+                <td class="year-cell">2001</td>
+                <td class="name-cell">Brett Bzura</td>
+                <td class="wt-cell">119</td>
+              </tr>
+              <tr>
+                <td class="year-cell">2002</td>
+                <td class="name-cell">Randy Frankel</td>
+                <td class="wt-cell">135</td>
+              </tr>
+              <tr>
+                <td class="year-cell">2003</td>
+                <td class="name-cell">Nick Parisi</td>
+                <td class="wt-cell">152</td>
+              </tr>
+              <tr>
+                <td class="year-cell">2004</td>
+                <td class="name-cell">Nick Parisi</td>
+                <td class="wt-cell">160</td>
+              </tr>
+              <tr>
+                <td class="year-cell">2005</td>
+                <td class="name-cell">Nick Parisi</td>
+                <td class="wt-cell">171</td>
+              </tr>
+              <tr>
+                <td class="year-cell">2006</td>
+                <td class="name-cell">Nick Parisi</td>
+                <td class="wt-cell">189</td>
+              </tr>
+              <tr>
+                <td class="year-cell">2006</td>
+                <td class="name-cell">Bryan Tiscia</td>
+                <td class="wt-cell">275</td>
+              </tr>
+              <tr>
+                <td class="year-cell">2008</td>
+                <td class="name-cell">Charlie Frankel</td>
+                <td class="wt-cell">182</td>
+              </tr>
+              <tr>
+                <td class="year-cell">2009</td>
+                <td class="name-cell">Vincent Leone</td>
+                <td class="wt-cell">112</td>
+              </tr>
+              <tr>
+                <td class="year-cell">2011</td>
+                <td class="name-cell">Vincent Leone</td>
+                <td class="wt-cell">130</td>
+              </tr>
+              <tr>
+                <td class="year-cell">2011</td>
+                <td class="name-cell">Mitch Seigel</td>
+                <td class="wt-cell">135</td>
+              </tr>
+              <tr>
+                <td class="year-cell">2016</td>
+                <td class="name-cell">Michael DeFaria</td>
+                <td class="wt-cell">145</td>
+              </tr>
+              <tr>
+                <td class="year-cell">2019</td>
+                <td class="name-cell">Harrison Gordon</td>
+                <td class="wt-cell">106</td>
+              </tr>
+              <tr>
+                <td class="year-cell">2019</td>
+                <td class="name-cell">Evan Brown</td>
+                <td class="wt-cell">160</td>
+              </tr>
+              <tr>
+                <td class="year-cell">2022</td>
+                <td class="name-cell">Christian Steensen</td>
+                <td class="wt-cell">285</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- REGION -->
+        <div class="tab-panel" id="tab-region">
+          <table class="hist-table">
+            <thead>
+              <tr>
+                <th>Year</th>
+                <th>Wrestler</th>
+                <th>Weight</th>
+                <th>Place</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="year-cell">1972</td>
+                <td class="name-cell">John Finley</td>
+                <td class="wt-cell">148</td>
+                <td><span class="place-chip place-other">3rd</span></td>
+              </tr>
+              <tr>
+                <td class="year-cell">1995</td>
+                <td class="name-cell">Livio DiRubbo</td>
+                <td class="wt-cell">119</td>
+                <td><span class="place-chip place-2">2</span></td>
+              </tr>
+              <tr>
+                <td class="year-cell">2003</td>
+                <td class="name-cell">Brett Frimmer</td>
+                <td class="wt-cell">112</td>
+                <td><span class="place-chip place-other">3rd</span></td>
+              </tr>
+              <tr>
+                <td class="year-cell">2003</td>
+                <td class="name-cell">Brett Bzura</td>
+                <td class="wt-cell">119</td>
+                <td><span class="place-chip place-other">4th</span></td>
+              </tr>
+              <tr>
+                <td class="year-cell">2004</td>
+                <td class="name-cell">Nick Parisi</td>
+                <td class="wt-cell">160</td>
+                <td><span class="place-chip place-2">2</span></td>
+              </tr>
+              <tr>
+                <td class="year-cell">2005</td>
+                <td class="name-cell">Nick Parisi</td>
+                <td class="wt-cell">171</td>
+                <td><span class="place-chip place-2">2</span></td>
+              </tr>
+              <tr>
+                <td class="year-cell">2005</td>
+                <td class="name-cell">Brian Tiscia</td>
+                <td class="wt-cell">275</td>
+                <td><span class="place-chip place-other">4th</span></td>
+              </tr>
+              <tr>
+                <td class="year-cell">2006</td>
+                <td class="name-cell">Nick Parisi</td>
+                <td class="wt-cell">189</td>
+                <td><span class="place-chip place-1">1</span></td>
+              </tr>
+              <tr>
+                <td class="year-cell">2007</td>
+                <td class="name-cell">Charlie Frankel</td>
+                <td class="wt-cell">103</td>
+                <td><span class="place-chip place-other">3rd</span></td>
+              </tr>
+              <tr>
+                <td class="year-cell">2007</td>
+                <td class="name-cell">Ahmed Fayed</td>
+                <td class="wt-cell">275</td>
+                <td><span class="place-chip place-other">4th</span></td>
+              </tr>
+              <tr>
+                <td class="year-cell">2008</td>
+                <td class="name-cell">Charlie Frankel</td>
+                <td class="wt-cell">103</td>
+                <td><span class="place-chip place-2">2</span></td>
+              </tr>
+              <tr>
+                <td class="year-cell">2009</td>
+                <td class="name-cell">Paul Saraiva</td>
+                <td class="wt-cell">145</td>
+                <td><span class="place-chip place-other">3rd</span></td>
+              </tr>
+              <tr>
+                <td class="year-cell">2010</td>
+                <td class="name-cell">Paul Saraiva</td>
+                <td class="wt-cell">145</td>
+                <td><span class="place-chip place-other">3rd</span></td>
+              </tr>
+              <tr>
+                <td class="year-cell">2010</td>
+                <td class="name-cell">Mitch Seigel</td>
+                <td class="wt-cell">215</td>
+                <td><span class="place-chip place-other">4th</span></td>
+              </tr>
+              <tr>
+                <td class="year-cell">2011</td>
+                <td class="name-cell">Vincent Leone</td>
+                <td class="wt-cell">130</td>
+                <td><span class="place-chip place-2">2</span></td>
+              </tr>
+              <tr>
+                <td class="year-cell">2011</td>
+                <td class="name-cell">Mitch Seigel</td>
+                <td class="wt-cell">215</td>
+                <td><span class="place-chip place-1">1</span></td>
+              </tr>
+              <tr>
+                <td class="year-cell">2012</td>
+                <td class="name-cell">Daniel Saraiva</td>
+                <td class="wt-cell">120</td>
+                <td><span class="place-chip place-other">4th</span></td>
+              </tr>
+              <tr>
+                <td class="year-cell">2013</td>
+                <td class="name-cell">Dan Hwang</td>
+                <td class="wt-cell">195</td>
+                <td><span class="place-chip place-other">4th</span></td>
+              </tr>
+              <tr>
+                <td class="year-cell">2020</td>
+                <td class="name-cell">Harrison Gordon</td>
+                <td class="wt-cell">106</td>
+                <td><span class="place-chip place-2">2</span></td>
+              </tr>
+              <tr>
+                <td class="year-cell">2020</td>
+                <td class="name-cell">Zach Vasile</td>
+                <td class="wt-cell">132</td>
+                <td><span class="place-chip place-2">2</span></td>
+              </tr>
+              <tr>
+                <td class="year-cell">2020</td>
+                <td class="name-cell">Edward Jang</td>
+                <td class="wt-cell">150</td>
+                <td><span class="place-chip place-other">4th</span></td>
+              </tr>
+              <tr>
+                <td class="year-cell">2022</td>
+                <td class="name-cell">Mike Malucelli</td>
+                <td class="wt-cell">190</td>
+                <td><span class="place-chip place-other">4th</span></td>
+              </tr>
+              <tr>
+                <td class="year-cell">2022</td>
+                <td class="name-cell">Christian Steensen</td>
+                <td class="wt-cell">285</td>
+                <td><span class="place-chip place-other">3rd</span></td>
+              </tr>
+              <tr>
+                <td class="year-cell">2026</td>
+                <td class="name-cell">Zahyr Evans</td>
+                <td class="wt-cell">—</td>
+                <td><span class="place-chip place-2">2</span></td>
+              </tr>
+              <tr>
+                <td class="year-cell">2026</td>
+                <td class="name-cell">Adam Lirov</td>
+                <td class="wt-cell">—</td>
+                <td><span class="place-chip place-2">2</span></td>
+              </tr>
+              <tr>
+                <td class="year-cell">2026</td>
+                <td class="name-cell">Eddie Hall</td>
+                <td class="wt-cell">—</td>
+                <td><span class="place-chip place-2">2</span></td>
+              </tr>
+              <tr>
+                <td class="year-cell">2026</td>
+                <td class="name-cell">Mark Libes</td>
+                <td class="wt-cell">—</td>
+                <td><span class="place-chip place-other">3rd</span></td>
+              </tr>
+              <tr>
+                <td class="year-cell">2026</td>
+                <td class="name-cell">Dane Mezheritsky</td>
+                <td class="wt-cell">—</td>
+                <td><span class="place-chip place-other">3rd</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- BOYS STATES -->
+        <div class="tab-panel" id="tab-states-boys">
+          <table class="hist-table">
+            <thead>
+              <tr>
+                <th>Year</th>
+                <th>Wrestler</th>
+                <th>Weight</th>
+                <th>Place</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="year-cell">1995</td>
+                <td class="name-cell">Livio DiRubbo</td>
+                <td class="wt-cell">119</td>
+                <td><span class="place-chip place-other">Placer</span></td>
+              </tr>
+              <tr>
+                <td class="year-cell">2005</td>
+                <td class="name-cell">Nick Parisi</td>
+                <td class="wt-cell">119</td>
+                <td><span class="place-chip place-other">3rd</span></td>
+              </tr>
+              <tr>
+                <td class="year-cell">2006</td>
+                <td class="name-cell">Nick Parisi</td>
+                <td class="wt-cell">189</td>
+                <td><span class="place-chip place-other">4th</span></td>
+              </tr>
+              <tr>
+                <td class="year-cell">2007</td>
+                <td class="name-cell">Charlie Frankel</td>
+                <td class="wt-cell">103</td>
+                <td><span class="place-chip place-other">7th</span></td>
+              </tr>
+              <tr>
+                <td class="year-cell">2011</td>
+                <td class="name-cell">Charlie Frankel</td>
+                <td class="wt-cell">103</td>
+                <td><span class="place-chip place-other">3rd</span></td>
+              </tr>
+              <tr>
+                <td class="year-cell">2011</td>
+                <td class="name-cell">Mitch Seigel</td>
+                <td class="wt-cell">215</td>
+                <td><span class="place-chip place-other">7th</span></td>
+              </tr>
+              <tr>
+                <td class="year-cell">2011</td>
+                <td class="name-cell">Vincent Leone</td>
+                <td class="wt-cell">130</td>
+                <td><span class="place-chip place-other">8th</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- GIRLS STATES -->
+        <div class="tab-panel" id="tab-states-girls">
+          <table class="hist-table">
+            <thead>
+              <tr>
+                <th>Year</th>
+                <th>Wrestler</th>
+                <th>Weight</th>
+                <th>Place</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="year-cell">2025</td>
+                <td class="name-cell">Nola Allen</td>
+                <td class="wt-cell">100</td>
+                <td><span class="place-chip place-other">4th</span></td>
+              </tr>
+              <tr>
+                <td class="year-cell">2026</td>
+                <td class="name-cell">Nola Allen</td>
+                <td class="wt-cell">—</td>
+                <td><span class="place-chip place-other">6th</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="footer-brand">
+        <img src="mustangslogo.png" alt="Mustangs logo" />
+        <div>
+          <div class="footer-brand-name">Marlboro Mustangs</div>
+          <div class="footer-brand-sub">Wrestling · District 17</div>
+        </div>
+      </div>
+      <nav class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="achievements.html">Achievements</a>
+        <a href="roster.html">Roster &amp; Stats</a>
+        <a href="calendar.html">Calendar</a>
+        <a href="mailto:cfrankel@frhsd.com">Contact</a>
+      </nav>
+      <p class="footer-copy">&copy; 2025 Marlboro High School Athletics</p>
+    </footer>
 
     <script src="roster.js"></script>
   </body>
