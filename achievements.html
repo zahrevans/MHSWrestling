@@ -1,40 +1,387 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Achievements</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Achievements · Marlboro Mustangs Wrestling</title>
+    <link rel="icon" href="mustangslogo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700;1,800;1,900&family=Barlow:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="achievement.css" />
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <header class="navbar">
+      <a class="nav-logo" href="index.html">
+        <img src="mustangslogo.png" alt="Marlboro Mustangs logo" />
+        <div class="nav-logo-text">
+          Mustangs
+          <span>Wrestling</span>
+        </div>
+      </a>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="achievements.html" class="active">Achievements</a>
+        <a href="roster.html">Roster &amp; Stats</a>
+        <a href="calendar.html">Calendar</a>
+      </nav>
+    </header>
 
-<div class="navbar">
-  <div class="logo">
-    <img src="logo.png">
-    <h2>MUSTANGS</h2>
-  </div>
-  <div class="nav-links">
-    <a href="index.html">Home</a>
-    <a href="achievements.html">Achievements</a>
-    <a href="roster.html">Roster & Stats</a>
-    <a href="calendar.html">Calendar</a>
-  </div>
-</div>
-
-<div class="section">
-  <div class="container">
-    <h1 style="text-align:center;">Mustang Achievements</h1>
-
-    <div class="grid-2" style="margin-top:40px;">
-      <div class="card">
-        <h2>Records</h2>
-      </div>
-
-      <div class="card">
-        <h2>Team Achievements</h2>
+    <!-- PAGE HERO -->
+    <div class="page-hero">
+      <div class="page-hero-inner">
+        <div class="page-hero-left">
+          <p class="page-eyebrow">Marlboro High School · Wrestling</p>
+          <h1 class="page-title">Season<br /><em>Achievements</em></h1>
+          <p class="page-sub">
+            A historic season — records broken, titles won, and a program that
+            continues to build its legacy year after year.
+          </p>
+        </div>
+        <div class="page-hero-stats">
+          <div class="hero-stat-block">
+            <div class="hero-stat-num">22</div>
+            <div class="hero-stat-label">Season Wins</div>
+          </div>
+          <div class="hero-stat-block">
+            <div class="hero-stat-num">4th</div>
+            <div class="hero-stat-label">State Sectional Seed</div>
+          </div>
+          <div class="hero-stat-block">
+            <div class="hero-stat-num">5</div>
+            <div class="hero-stat-label">Region Qualifiers</div>
+          </div>
+        </div>
       </div>
     </div>
 
-  </div>
-</div>
+    <!-- SEASON HIGHLIGHTS -->
+    <section class="section highlights-section">
+      <div class="section-inner">
+        <p class="section-label">2025–26 Season</p>
+        <h2 class="section-heading">Season <em>Highlights</em></h2>
+        <div class="gold-rule"></div>
 
-</body>
+        <div class="highlights-grid">
+          <div class="highlight-card featured" data-num="1">
+            <span class="hl-icon">🏆</span>
+            <span class="hl-tag">Championship</span>
+            <h3 class="hl-title">F-Division Champions</h3>
+            <p class="hl-desc">
+              The Mustangs captured the F-Division title, continuing to assert
+              their dominance in divisional play and reaffirming Marlboro as one
+              of the premier wrestling programs in the Shore Conference.
+            </p>
+          </div>
+
+          <div class="highlight-card" data-num="2">
+            <span class="hl-icon">📜</span>
+            <span class="hl-tag">History</span>
+            <h3 class="hl-title">First Division Title Since 1971</h3>
+            <p class="hl-desc">
+              For the first time in over 50 years, Marlboro claimed a division
+              championship — a monumental moment for the program and its
+              community.
+            </p>
+          </div>
+
+          <div class="highlight-card" data-num="3">
+            <span class="hl-icon">🥊</span>
+            <span class="hl-tag">State Sectionals</span>
+            <h3 class="hl-title">Highest-Ever Sectional Seed: 4th</h3>
+            <p class="hl-desc">
+              Marlboro earned the highest seed in program history heading into
+              state sectionals — then made even more history by winning their
+              first-ever state sectional match.
+            </p>
+          </div>
+
+          <div class="highlight-card" data-num="4">
+            <span class="hl-icon">🏅</span>
+            <span class="hl-tag">Districts</span>
+            <h3 class="hl-title">4th Place at District Championships</h3>
+            <p class="hl-desc">
+              The team finished 4th at the district championships and sent
+              <strong style="color: var(--white)">5 wrestlers</strong> to the NJ
+              Region Championships — the most qualifiers in recent memory.
+            </p>
+          </div>
+
+          <div class="highlight-card" data-num="5">
+            <span class="hl-icon">⚡</span>
+            <span class="hl-tag">Record</span>
+            <h3 class="hl-title">22 Wins: New Season Record</h3>
+            <p class="hl-desc">
+              The team shattered the previous single-season win record of 19
+              (set in 2020) with an incredible 22-win campaign, the best in
+              program history.
+            </p>
+          </div>
+
+          <div class="highlight-card" data-num="6">
+            <span class="hl-icon">🎯</span>
+            <span class="hl-tag">Milestone</span>
+            <h3 class="hl-title">100th Team Win for Coach Frankel</h3>
+            <p class="hl-desc">
+              Head Coach Charlie Frankel recorded his 100th team victory this
+              season — a testament to years of dedication, discipline, and
+              championship-level leadership.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RECORD NUMBERS -->
+    <section class="section records-section">
+      <div class="section-inner">
+        <p class="section-label">By the Numbers</p>
+        <h2 class="section-heading">Program <em>Records</em></h2>
+        <div class="gold-rule"></div>
+
+        <div class="records-grid">
+          <div class="record-card">
+            <div class="record-num">22</div>
+            <div class="record-label">Season Wins</div>
+            <div class="record-sub">Previous record: 19<br />(set in 2020)</div>
+          </div>
+          <div class="record-card">
+            <div class="record-num">
+              100<span style="font-size: 28px">+</span>
+            </div>
+            <div class="record-label">Coach Frankel Wins</div>
+            <div class="record-sub">
+              Career team victories<br />as head coach
+            </div>
+          </div>
+          <div class="record-card">
+            <div class="record-num">4th</div>
+            <div class="record-label">Sectional Seed</div>
+            <div class="record-sub">Highest in program<br />history</div>
+          </div>
+          <div class="record-card">
+            <div class="record-num">1st</div>
+            <div class="record-label">Sectional Win</div>
+            <div class="record-sub">
+              First-ever state<br />sectional victory
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NOLA ALLEN SPOTLIGHT -->
+    <section class="section nola-section">
+      <div class="nola-inner">
+        <p class="section-label">Individual Spotlight</p>
+        <h2 class="section-heading">A Legend in <em>the Making</em></h2>
+        <div class="gold-rule"></div>
+
+        <div class="nola-banner">
+          <div class="nola-header">
+            <div class="nola-avatar">
+              <span class="nola-avatar-text">NA</span>
+            </div>
+            <div class="nola-name-block">
+              <p class="nola-label">Girls Wrestling · Marlboro High School</p>
+              <h3 class="nola-name">Nola <em>Allen</em></h3>
+              <p class="nola-subtitle">
+                111 career wins · First girl to reach 100 wins in program
+                history · Two-time NJ State placewinner · 2026 District Champion
+                · Most Outstanding Wrestler
+              </p>
+            </div>
+          </div>
+
+          <div class="nola-achievements">
+            <div class="nola-ach">
+              <div class="nola-ach-medal">🥇</div>
+              <div class="nola-ach-title">2026 District Champion</div>
+              <div class="nola-ach-desc">
+                Named Most Outstanding Wrestler of the tournament — the highest
+                individual honor at the district level.
+              </div>
+            </div>
+            <div class="nola-ach">
+              <div class="nola-ach-medal">🏅</div>
+              <div class="nola-ach-title">Two-Time State Placewinner</div>
+              <div class="nola-ach-desc">
+                4th place at 2025 NJ State Championships. 6th place at 2026 NJ
+                State Championships. First girl in Marlboro history to place
+                twice.
+              </div>
+            </div>
+            <div class="nola-ach">
+              <div class="nola-ach-medal">📊</div>
+              <div class="nola-ach-title">All-Time Marlboro Records</div>
+              <div class="nola-ach-desc">
+                Most career wins, most single-season wins, and most career pins
+                by a girls wrestler in Marlboro history.
+              </div>
+            </div>
+            <div class="nola-ach">
+              <div class="nola-ach-medal">🎽</div>
+              <div class="nola-ach-title">2× Shore Conference Finalist</div>
+              <div class="nola-ach-desc">
+                Reached the Shore Conference Finals twice, establishing herself
+                as one of the top girls wrestlers in the conference.
+              </div>
+            </div>
+            <div class="nola-ach">
+              <div class="nola-ach-medal">🗺️</div>
+              <div class="nola-ach-title">3× Region Finalist</div>
+              <div class="nola-ach-desc">
+                Three consecutive trips to the NJ Region finals — one of the
+                most consistent regional performers in the state.
+              </div>
+            </div>
+            <div class="nola-ach">
+              <div class="nola-ach-medal">💯</div>
+              <div class="nola-ach-title">100-Win Milestone</div>
+              <div class="nola-ach-desc">
+                First girl in Marlboro history to reach 100 career victories.
+                Finished her career with 111 wins — a record unlikely to be
+                broken soon.
+              </div>
+            </div>
+          </div>
+
+          <div class="nola-milestones">
+            <span class="milestone-pill">111 Career Wins</span>
+            <span class="milestone-pill">2026 District Champ</span>
+            <span class="milestone-pill">Most Outstanding Wrestler</span>
+            <span class="milestone-pill">4th Place States 2025</span>
+            <span class="milestone-pill">6th Place States 2026</span>
+            <span class="milestone-pill">3× Region Finalist</span>
+            <span class="milestone-pill">2× Shore Finalist</span>
+            <span class="milestone-pill">All-Time Win Record</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- REGION RESULTS -->
+    <section class="section region-section">
+      <div class="section-inner">
+        <p class="section-label">NJ Region Championships</p>
+        <h2 class="section-heading">Region <em>Results</em></h2>
+        <div class="gold-rule"></div>
+
+        <div class="region-cols">
+          <!-- BOYS -->
+          <div class="region-block">
+            <div class="region-block-header">
+              <p class="region-block-label">Boys Wrestling</p>
+              <h3 class="region-block-title">Boys Region Finishers</h3>
+            </div>
+            <div class="region-list">
+              <div class="region-row">
+                <div class="place-badge place-2">2</div>
+                <div class="region-wrestler-name">Zahyr Evans</div>
+                <div class="region-place-label">🥈 2nd Place</div>
+              </div>
+              <div class="region-row">
+                <div class="place-badge place-2">2</div>
+                <div class="region-wrestler-name">Adam Lirov</div>
+                <div class="region-place-label">🥈 2nd Place</div>
+              </div>
+              <div class="region-row">
+                <div class="place-badge place-2">2</div>
+                <div class="region-wrestler-name">Eddie Hall</div>
+                <div class="region-place-label">🥈 2nd Place</div>
+              </div>
+              <div class="region-row">
+                <div class="place-badge place-3">3</div>
+                <div class="region-wrestler-name">Mark Libes</div>
+                <div class="region-place-label">🥉 3rd Place</div>
+              </div>
+              <div class="region-row">
+                <div class="place-badge place-3">3</div>
+                <div class="region-wrestler-name">Dane Mezheritsky</div>
+                <div class="region-place-label">🥉 3rd Place</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- GIRLS -->
+          <div class="region-block">
+            <div class="region-block-header">
+              <p class="region-block-label">Girls Wrestling</p>
+              <h3 class="region-block-title">Lady Mustangs — 3 Qualifiers</h3>
+            </div>
+            <div class="region-list">
+              <div class="region-row">
+                <div class="place-badge place-1">1</div>
+                <div class="region-wrestler-name">Nola Allen</div>
+                <div class="region-place-label">🥇 Champion · MOW</div>
+              </div>
+              <div class="region-row">
+                <div class="place-badge place-2">2</div>
+                <div class="region-wrestler-name">Shaade Robertson</div>
+                <div class="region-place-label">🥈 2nd Place</div>
+              </div>
+              <div class="region-row">
+                <div class="place-badge place-3">3</div>
+                <div class="region-wrestler-name">Ro Elshafey</div>
+                <div class="region-place-label">🥉 3rd Place</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HALL OF FAME -->
+    <section class="section hof-section">
+      <div class="section-inner">
+        <p class="section-label">Honor</p>
+        <h2 class="section-heading">Hall of <em>Fame</em></h2>
+        <div class="gold-rule"></div>
+
+        <div class="hof-card">
+          <div class="hof-year-block">
+            <div class="hof-year">2026</div>
+            <div class="hof-year-label">Inductee</div>
+          </div>
+          <div class="hof-copy">
+            <span class="hof-tag">Marlboro Athletic Hall of Fame</span>
+            <h3 class="hof-name">Coach <em>Charlie Frankel</em></h3>
+            <p class="hof-desc">
+              Coach Charlie Frankel has been inducted into the
+              <strong>2026 Marlboro Athletic Hall of Fame</strong> — the highest
+              honor the school can bestow on a member of the athletic community.
+              Recognized for his decades of leadership, his mentorship of
+              countless student-athletes, and his role in transforming Marlboro
+              wrestling into a program of distinction, Coach Frankel joins a
+              select group of legends whose contributions to Marlboro athletics
+              will never be forgotten.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="footer-brand">
+        <img src="mustangslogo.png" alt="Mustangs logo" />
+        <div class="footer-brand-text">
+          <div class="footer-brand-name">Marlboro Mustangs</div>
+          <div class="footer-brand-sub">Wrestling · District 17</div>
+        </div>
+      </div>
+      <nav class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="achievements.html">Achievements</a>
+        <a href="roster.html">Roster &amp; Stats</a>
+        <a href="calendar.html">Calendar</a>
+        <a href="mailto:cfrankel@frhsd.com">Contact</a>
+      </nav>
+      <p class="footer-copy">&copy; 2025 Marlboro High School Athletics</p>
+    </footer>
+  </body>
 </html>
